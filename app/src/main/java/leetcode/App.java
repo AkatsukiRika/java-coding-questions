@@ -3,12 +3,21 @@
  */
 package leetcode;
 
+import leetcode.solution.IsNumberSolution;
+import leetcode.solution.ReplaceSpaceSolution;
+
 public class App {
-    public String getGreeting() {
-        return "Oh fuck you!";
+    public static String replaceSpace() {
+        ReplaceSpaceSolution solution = new ReplaceSpaceSolution();
+        return solution.replaceSpace("We are happy");
+    }
+
+    public static boolean isNumber() {
+        IsNumberSolution solution = new IsNumberSolution();
+        return solution.isNumber(".e1");
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        System.out.println(isNumber());
     }
 }

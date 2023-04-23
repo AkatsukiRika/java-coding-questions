@@ -1,12 +1,19 @@
 package leetcode.solution;
 
+import leetcode.BaseSolution;
+
 import java.util.ArrayList;
 
 /**
  * 剑指 Offer 58 - II. 左旋转字符串
  * 难易度：Easy
  */
-public class ReverseLeftWordsSolution {
+public class ReverseLeftWordsSolution extends BaseSolution<String> {
+    @Override
+    public String performSingleTest() {
+        return null;
+    }
+
     public String reverseLeftWords(String s, int n) {
         if (s.isEmpty()) {
             return "";

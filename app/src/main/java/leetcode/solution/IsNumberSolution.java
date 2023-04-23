@@ -1,10 +1,17 @@
 package leetcode.solution;
 
+import leetcode.BaseSolution;
+
 /**
  * 剑指 Offer 20. 表示数值的字符串
  * 难易度：Medium
  */
-public class IsNumberSolution {
+public class IsNumberSolution extends BaseSolution<Boolean> {
+    @Override
+    public Boolean performSingleTest() {
+        return isNumber(".e1");
+    }
+
     enum Status {
         BEGIN,
         READY,

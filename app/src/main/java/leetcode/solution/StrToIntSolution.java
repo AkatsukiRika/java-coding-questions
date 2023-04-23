@@ -1,12 +1,19 @@
 package leetcode.solution;
 
+import leetcode.BaseSolution;
+
 import java.util.LinkedList;
 
 /**
  * 剑指 Offer 67. 把字符串转换成整数
  * 难易度：Medium
  */
-public class StrToIntSolution {
+public class StrToIntSolution extends BaseSolution<Integer> {
+    @Override
+    public Integer performSingleTest() {
+        return strToInt("0-1");
+    }
+
     enum Status {
         READY,
         ZERO_BEGIN,

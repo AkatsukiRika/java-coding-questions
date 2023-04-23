@@ -3,27 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.IsNumberSolution;
-import leetcode.solution.ReplaceSpaceSolution;
 import leetcode.solution.StrToIntSolution;
 
 public class App {
-    public static String replaceSpace() {
-        ReplaceSpaceSolution solution = new ReplaceSpaceSolution();
-        return solution.replaceSpace("We are happy");
-    }
-
-    public static boolean isNumber() {
-        IsNumberSolution solution = new IsNumberSolution();
-        return solution.isNumber(".e1");
-    }
-
-    public static int strToInt() {
-        StrToIntSolution solution = new StrToIntSolution();
-        return solution.strToInt("0-1");
-    }
-
     public static void main(String[] args) {
-        System.out.println(strToInt());
+        BaseSolution<Integer> solution = new StrToIntSolution();
+        Integer result = solution.performSingleTest();
+        System.out.println(result);
     }
 }

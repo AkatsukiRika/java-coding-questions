@@ -3,12 +3,13 @@
  */
 package leetcode;
 
-import leetcode.solution.StrToIntSolution;
+import leetcode.solution.ReversePrintSolution;
+import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new StrToIntSolution();
-        Integer result = solution.performSingleTest();
-        System.out.println(result);
+        BaseSolution<int[]> solution = new ReversePrintSolution();
+        int[] result = solution.performSingleTest();
+        Printer.printIntArray(result);
     }
 }

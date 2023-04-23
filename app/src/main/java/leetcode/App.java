@@ -5,6 +5,7 @@ package leetcode;
 
 import leetcode.solution.IsNumberSolution;
 import leetcode.solution.ReplaceSpaceSolution;
+import leetcode.solution.StrToIntSolution;
 
 public class App {
     public static String replaceSpace() {
@@ -17,7 +18,12 @@ public class App {
         return solution.isNumber(".e1");
     }
 
+    public static int strToInt() {
+        StrToIntSolution solution = new StrToIntSolution();
+        return solution.strToInt("0-1");
+    }
+
     public static void main(String[] args) {
-        System.out.println(isNumber());
+        System.out.println(strToInt());
     }
 }

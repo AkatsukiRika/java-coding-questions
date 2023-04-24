@@ -3,13 +3,14 @@
  */
 package leetcode;
 
-import leetcode.solution.ReversePrintSolution;
+import leetcode.model.ListNode;
+import leetcode.solution.ReverseListSolution;
 import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<int[]> solution = new ReversePrintSolution();
-        int[] result = solution.performSingleTest();
-        Printer.printIntArray(result);
+        BaseSolution<ListNode> solution = new ReverseListSolution();
+        ListNode result = solution.performSingleTest();
+        Printer.printLinkedList(result);
     }
 }

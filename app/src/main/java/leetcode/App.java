@@ -4,12 +4,12 @@
 package leetcode;
 
 import leetcode.model.ListNode;
-import leetcode.solution.ReverseListSolution;
+import leetcode.solution.DeleteNodeSolution;
 import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<ListNode> solution = new ReverseListSolution();
+        BaseSolution<ListNode> solution = new DeleteNodeSolution();
         ListNode result = solution.performSingleTest();
         Printer.printLinkedList(result);
     }

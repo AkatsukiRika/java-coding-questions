@@ -7,6 +7,10 @@ import leetcode.util.LinkedListHelper;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * 剑指 Offer 24. 反转链表
+ * 难易度：Easy
+ */
 public class ReverseListSolution extends BaseSolution<ListNode> {
     @Override
     public ListNode performSingleTest() {

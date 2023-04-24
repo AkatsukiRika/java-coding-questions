@@ -7,6 +7,10 @@ import leetcode.util.LinkedListHelper;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * 剑指 Offer 06. 从尾到头打印链表
+ * 难易度：Easy
+ */
 public class ReversePrintSolution extends BaseSolution<int[]> {
     @Override
     public int[] performSingleTest() {

@@ -4,12 +4,12 @@
 package leetcode;
 
 import leetcode.model.ListNode;
-import leetcode.solution.DeleteNodeSolution;
+import leetcode.solution.GetKthFromEndSolution;
 import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<ListNode> solution = new DeleteNodeSolution();
+        BaseSolution<ListNode> solution = new GetKthFromEndSolution();
         ListNode result = solution.performSingleTest();
         Printer.printLinkedList(result);
     }

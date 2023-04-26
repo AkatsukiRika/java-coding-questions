@@ -3,11 +3,11 @@
  */
 package leetcode;
 
-import leetcode.solution.CQueue;
+import leetcode.solution.MinStack;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new CQueue();
+        BaseSolution<Integer> solution = new MinStack();
         solution.performSingleTest();
     }
 }

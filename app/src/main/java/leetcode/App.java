@@ -3,14 +3,11 @@
  */
 package leetcode;
 
-import leetcode.model.ListNode;
-import leetcode.solution.MergeTwoListsSolution;
-import leetcode.util.Printer;
+import leetcode.solution.CQueue;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<ListNode> solution = new MergeTwoListsSolution();
-        ListNode result = solution.performSingleTest();
-        Printer.printLinkedList(result);
+        BaseSolution<Integer> solution = new CQueue();
+        solution.performSingleTest();
     }
 }

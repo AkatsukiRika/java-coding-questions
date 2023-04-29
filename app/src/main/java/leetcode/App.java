@@ -3,12 +3,13 @@
  */
 package leetcode;
 
-import leetcode.model.Node;
-import leetcode.solution.CopyRandomListSolution;
+import leetcode.solution.LevelOrderSolution;
+import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Node> solution = new CopyRandomListSolution();
-        solution.performSingleTest();
+        BaseSolution<int[]> solution = new LevelOrderSolution();
+        int[] result = solution.performSingleTest();
+        Printer.printIntArray(result);
     }
 }

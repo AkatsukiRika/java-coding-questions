@@ -3,12 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.ReverseWordsSolution;
+import leetcode.solution.LevelOrder2Solution;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<String> solution = new ReverseWordsSolution();
-        String result = solution.performSingleTest();
-        System.out.println(result);
+        BaseSolution<List<List<Integer>>> solution = new LevelOrder2Solution();
+        solution.performSingleTest();
     }
 }

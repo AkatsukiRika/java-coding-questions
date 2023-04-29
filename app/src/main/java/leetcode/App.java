@@ -3,11 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.MinStack;
+import leetcode.model.Node;
+import leetcode.solution.CopyRandomListSolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new MinStack();
+        BaseSolution<Node> solution = new CopyRandomListSolution();
         solution.performSingleTest();
     }
 }

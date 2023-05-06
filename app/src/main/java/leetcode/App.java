@@ -3,12 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.LevelOrder2Solution;
-import java.util.List;
+import leetcode.solution.SpiralOrderSolution;
+import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<List<List<Integer>>> solution = new LevelOrder2Solution();
-        solution.performSingleTest();
+        BaseSolution<int[]> solution = new SpiralOrderSolution();
+        Printer.printIntArray(solution.performSingleTest());
     }
 }

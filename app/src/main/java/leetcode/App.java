@@ -3,12 +3,11 @@
  */
 package leetcode;
 
-import leetcode.solution.TwoSumSolution;
-import leetcode.util.Printer;
+import leetcode.solution.FindRepeatNumberSolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<int[]> solution = new TwoSumSolution();
-        Printer.printIntArray(solution.performSingleTest());
+        BaseSolution<Integer> solution = new FindRepeatNumberSolution();
+        System.out.println(solution.performSingleTest());
     }
 }

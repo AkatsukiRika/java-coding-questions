@@ -3,11 +3,11 @@
  */
 package leetcode;
 
-import leetcode.solution.FindRepeatNumberSolution;
+import leetcode.solution.FindNumberIn2DArraySolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new FindRepeatNumberSolution();
+        BaseSolution<Boolean> solution = new FindNumberIn2DArraySolution();
         System.out.println(solution.performSingleTest());
     }
 }

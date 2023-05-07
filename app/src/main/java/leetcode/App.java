@@ -3,12 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.SpiralOrderSolution;
+import leetcode.solution.TwoSumSolution;
 import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<int[]> solution = new SpiralOrderSolution();
+        BaseSolution<int[]> solution = new TwoSumSolution();
         Printer.printIntArray(solution.performSingleTest());
     }
 }

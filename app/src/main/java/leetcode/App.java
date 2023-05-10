@@ -3,11 +3,14 @@
  */
 package leetcode;
 
-import leetcode.solution.FindNumberIn2DArraySolution;
+import leetcode.solution.LevelOrder3Solution;
+
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Boolean> solution = new FindNumberIn2DArraySolution();
-        System.out.println(solution.performSingleTest());
+        BaseSolution<List<List<Integer>>> solution = new LevelOrder3Solution();
+        List<List<Integer>> result = solution.performSingleTest();
+        System.out.println(result);
     }
 }

@@ -3,14 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.LevelOrder3Solution;
-
-import java.util.List;
+import leetcode.solution.PrintNumbersSolution;
+import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<List<List<Integer>>> solution = new LevelOrder3Solution();
-        List<List<Integer>> result = solution.performSingleTest();
-        System.out.println(result);
+        BaseSolution<int[]> solution = new PrintNumbersSolution();
+        Printer.printIntArray(solution.performSingleTest());
     }
 }

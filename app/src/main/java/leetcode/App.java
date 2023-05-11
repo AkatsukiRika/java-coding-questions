@@ -3,12 +3,11 @@
  */
 package leetcode;
 
-import leetcode.solution.PrintNumbersSolution;
-import leetcode.util.Printer;
+import leetcode.solution.IsSymmetricSolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<int[]> solution = new PrintNumbersSolution();
-        Printer.printIntArray(solution.performSingleTest());
+        BaseSolution<Boolean> solution = new IsSymmetricSolution();
+        System.out.printf("[SOLUTION RESULT] %b", solution.performSingleTest());
     }
 }

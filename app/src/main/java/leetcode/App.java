@@ -3,11 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.MinArraySolution;
+import leetcode.solution.ExchangeSolution;
+import leetcode.util.Printer;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new MinArraySolution();
-        System.out.printf("[SOLUTION RESULT] %d", solution.performSingleTest());
+        BaseSolution<int[]> solution = new ExchangeSolution();
+        Printer.printIntArray(solution.performSingleTest());
     }
 }

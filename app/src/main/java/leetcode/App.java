@@ -3,12 +3,11 @@
  */
 package leetcode;
 
-import leetcode.solution.ExchangeSolution;
-import leetcode.util.Printer;
+import leetcode.solution.FibSolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<int[]> solution = new ExchangeSolution();
-        Printer.printIntArray(solution.performSingleTest());
+        BaseSolution<Integer> solution = new FibSolution();
+        System.out.println(solution.performSingleTest());
     }
 }

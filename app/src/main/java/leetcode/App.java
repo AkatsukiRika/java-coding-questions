@@ -3,11 +3,12 @@
  */
 package leetcode;
 
-import leetcode.solution.FibSolution;
+import leetcode.model.TreeNode;
+import leetcode.solution.MirrorTreeSolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new FibSolution();
-        System.out.println(solution.performSingleTest());
+        BaseSolution<TreeNode> solution = new MirrorTreeSolution();
+        solution.performSingleTest();
     }
 }

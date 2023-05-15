@@ -3,12 +3,11 @@
  */
 package leetcode;
 
-import leetcode.model.TreeNode;
-import leetcode.solution.MirrorTreeSolution;
+import leetcode.solution.NumWaysSolution;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<TreeNode> solution = new MirrorTreeSolution();
-        solution.performSingleTest();
+        BaseSolution<Integer> solution = new NumWaysSolution();
+        System.out.println(solution.performSingleTest());
     }
 }

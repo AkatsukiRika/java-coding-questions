@@ -4,10 +4,26 @@
 package leetcode;
 
 import leetcode.solution.NumWaysSolution;
+import leetcode.sort.SelectionSort;
+import leetcode.util.Printer;
+
+import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
-        BaseSolution<Integer> solution = new NumWaysSolution();
-        System.out.println(solution.performSingleTest());
+//        BaseSolution<Integer> solution = new NumWaysSolution();
+//        System.out.println(solution.performSingleTest());
+        testSorts();
+    }
+
+    private static void testSorts() {
+        testSingleSort(new SelectionSort());
+    }
+
+    private static void testSingleSort(ISort sort) {
+        long beforeTime = System.currentTimeMillis();
+        int[] result = sort.performTest();
+        System.out.printf("TYPE=%s, TIME=%d\n", sort.getSortType(), System.currentTimeMillis() - beforeTime);
+        Printer.printIntArray(result);
     }
 }

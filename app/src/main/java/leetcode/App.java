@@ -4,6 +4,7 @@
 package leetcode;
 
 import leetcode.solution.NumWaysSolution;
+import leetcode.sort.BubbleSort;
 import leetcode.sort.LibrarySort;
 import leetcode.sort.SelectionSort;
 import leetcode.util.Printer;
@@ -25,6 +26,12 @@ public class App {
         sort = new LibrarySort();
         testSingleSort(sort, originArray);
         sort = new SelectionSort();
+        testSingleSort(sort, originArray);
+
+        originArray = new int[]{-5, 9, 11, 13, 32, 4, 1, 10, 88, 2, 8, 3, 16, 14};
+        sort = new LibrarySort();
+        testSingleSort(sort, originArray);
+        sort = new BubbleSort();
         testSingleSort(sort, originArray);
     }
 

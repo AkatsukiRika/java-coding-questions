@@ -7,7 +7,5 @@ package leetcode;
 public interface ISort {
     int[] performSort(int[] originArray);
     
-    int[] performTest();
-    
     String getSortType();
 }

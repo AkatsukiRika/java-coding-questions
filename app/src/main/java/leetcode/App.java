@@ -4,6 +4,7 @@
 package leetcode;
 
 import leetcode.solution.NumWaysSolution;
+import leetcode.sort.LibrarySort;
 import leetcode.sort.SelectionSort;
 import leetcode.util.Printer;
 
@@ -17,13 +18,20 @@ public class App {
     }
 
     private static void testSorts() {
-        testSingleSort(new SelectionSort());
+        int[] originArray;
+        ISort sort;
+
+        originArray = new int[]{9, 11, 13, 4, 6, 5, 7, 12, 1, 10, 2, 8, 3, 16, 14};
+        sort = new LibrarySort();
+        testSingleSort(sort, originArray);
+        sort = new SelectionSort();
+        testSingleSort(sort, originArray);
     }
 
-    private static void testSingleSort(ISort sort) {
+    private static void testSingleSort(ISort sort, int[] originArray) {
         long beforeTime = System.currentTimeMillis();
-        int[] result = sort.performTest();
-        System.out.printf("TYPE=%s, TIME=%d\n", sort.getSortType(), System.currentTimeMillis() - beforeTime);
+        int[] result = sort.performSort(originArray);
+        System.out.printf("TYPE=%s, TIME=%dms\n", sort.getSortType(), System.currentTimeMillis() - beforeTime);
         Printer.printIntArray(result);
     }
 }

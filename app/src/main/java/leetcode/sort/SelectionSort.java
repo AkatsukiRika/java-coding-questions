@@ -23,13 +23,6 @@ public class SelectionSort implements ISort {
     }
 
     @Override
-    public int[] performTest() {
-        return performSort(
-            new int[]{9, 11, 13, 4, 6, 5, 7, 12, 1, 10, 2, 8, 3, 16, 14}
-        );
-    }
-
-    @Override
     public String getSortType() {
         return SORT_TYPE_NAME;
     }

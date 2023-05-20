@@ -3,7 +3,6 @@
  */
 package leetcode;
 
-import leetcode.solution.NumWaysSolution;
 import leetcode.sort.BubbleSort;
 import leetcode.sort.LibrarySort;
 import leetcode.sort.SelectionSort;
@@ -19,23 +18,27 @@ public class App {
     }
 
     private static void testSorts() {
-        int[] originArray;
-        ISort sort;
-
-        originArray = new int[]{9, 11, 13, 4, 6, 5, 7, 12, 1, 10, 2, 8, 3, 16, 14};
-        sort = new LibrarySort();
-        testSingleSort(sort, originArray);
-        sort = new SelectionSort();
-        testSingleSort(sort, originArray);
-
-        originArray = new int[]{-5, 9, 11, 13, 32, 4, 1, 10, 88, 2, 8, 3, 16, 14};
-        sort = new LibrarySort();
-        testSingleSort(sort, originArray);
-        sort = new BubbleSort();
-        testSingleSort(sort, originArray);
+        testSingleSort(
+                new SelectionSort(),
+                new int[]{9, 11, 13, 4, 6, 5, 7, 12, 1, 10, 2, 8, 3, 16, 14}
+        );
+        testSingleSort(
+                new BubbleSort(),
+                new int[]{-5, 9, 11, 13, 32, 4, 1, 10, 88, 2, 8, 3, 16, 14}
+        );
     }
 
     private static void testSingleSort(ISort sort, int[] originArray) {
+        int[] array;
+
+        array = Arrays.copyOf(originArray, originArray.length);
+        testSingleSortInner(new LibrarySort(), array);
+
+        array = Arrays.copyOf(originArray, originArray.length);
+        testSingleSortInner(sort, array);
+    }
+
+    private static void testSingleSortInner(ISort sort, int[] originArray) {
         long beforeTime = System.currentTimeMillis();
         int[] result = sort.performSort(originArray);
         System.out.printf("TYPE=%s, TIME=%dms\n", sort.getSortType(), System.currentTimeMillis() - beforeTime);

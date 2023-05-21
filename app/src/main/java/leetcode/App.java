@@ -4,6 +4,7 @@
 package leetcode;
 
 import leetcode.sort.BubbleSort;
+import leetcode.sort.InsertionSort;
 import leetcode.sort.LibrarySort;
 import leetcode.sort.SelectionSort;
 import leetcode.util.Printer;
@@ -25,6 +26,10 @@ public class App {
         testSingleSort(
                 new BubbleSort(),
                 new int[]{-5, 9, 11, 13, 32, 4, 1, 10, 88, 2, 8, 3, 16, 14}
+        );
+        testSingleSort(
+                new InsertionSort(),
+                new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}
         );
     }
 

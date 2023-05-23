@@ -3,10 +3,7 @@
  */
 package leetcode;
 
-import leetcode.sort.BubbleSort;
-import leetcode.sort.InsertionSort;
-import leetcode.sort.LibrarySort;
-import leetcode.sort.SelectionSort;
+import leetcode.sort.*;
 import leetcode.util.Printer;
 
 import java.util.Arrays;
@@ -30,6 +27,10 @@ public class App {
         testSingleSort(
                 new InsertionSort(),
                 new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}
+        );
+        testSingleSort(
+                new MergeSort(),
+                new int[]{101, 11, 13, 51, 7, 12, 1, 8, 10, 2, 17, 3, 16, 14}
         );
     }
 

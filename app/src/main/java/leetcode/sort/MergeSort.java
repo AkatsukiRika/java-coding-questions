@@ -101,7 +101,7 @@ public class MergeSort implements ISort {
         bisectInfo.layer--;
     }
 
-    private int[] mergeTwoArrays(int[] array1, int[] array2) {
+    public int[] mergeTwoArrays(int[] array1, int[] array2) {
         if (array1.length == 0) {
             return array2;
         }

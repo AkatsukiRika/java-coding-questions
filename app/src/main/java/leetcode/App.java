@@ -32,6 +32,10 @@ public class App {
                 new MergeSort(),
                 new int[]{101, 11, 13, 51, 7, 12, 1, 8, 10, 2, 17, 3, 16, 14}
         );
+        testSingleSort(
+                new BucketSort(),
+                new int[]{1011, 23211, 124243, 511, 724332, -1124234}
+        );
     }
 
     private static void testSingleSort(ISort sort, int[] originArray) {

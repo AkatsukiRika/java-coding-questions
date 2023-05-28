@@ -36,6 +36,10 @@ public class App {
                 new BucketSort(),
                 new Integer[]{1011, 23211, 124243, 511, 724332, -1124234}
         );
+        testSingleSort(
+                new CountingSort(),
+                new Float[]{9f, 11f, -13f, 4.67f, 12f, 1f, -10f, 3.3333f, 8f, 3f}
+        );
     }
 
     private static <T> void testSingleSort(ISort<T> sort, T[] originArray) {

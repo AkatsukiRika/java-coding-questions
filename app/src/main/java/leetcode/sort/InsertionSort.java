@@ -2,21 +2,19 @@ package leetcode.sort;
 
 import leetcode.ISort;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
-public class InsertionSort implements ISort {
+public class InsertionSort implements ISort<Integer> {
     private static final String SORT_TYPE = "插入排序";
 
     @Override
-    public int[] performSort(int[] originArray) {
+    public Integer[] performSort(Integer[] originArray) {
         if (originArray.length <= 1) {
             return originArray;
         }
 
-        LinkedList<Integer> originList = new LinkedList<>();
-        for (int value : originArray) {
-            originList.add(value);
-        }
+        LinkedList<Integer> originList = new LinkedList<>(Arrays.asList(originArray));
         for (int i = 1; i < originList.size(); i++) {
             int j;
             for (j = i - 1; j >= 0; j--) {
@@ -29,7 +27,7 @@ public class InsertionSort implements ISort {
             originList.add(j + 1, nodeToInsert);
         }
 
-        int[] resultArray = new int[originList.size()];
+        Integer[] resultArray = new Integer[originList.size()];
         int ptr = 0;
         for (int value : originList) {
             resultArray[ptr++] = value;

@@ -4,7 +4,7 @@ import leetcode.ISort;
 
 import java.util.*;
 
-public class MergeSort implements ISort {
+public class MergeSort implements ISort<Integer> {
     private static final String SORT_TYPE = "归并排序";
 
     private static class BisectInfo {
@@ -28,17 +28,17 @@ public class MergeSort implements ISort {
     private final Map<Integer, List<BisectInfo>> bisectInfoMap = new TreeMap<>();
 
     @Override
-    public int[] performSort(int[] originArray) {
+    public Integer[] performSort(Integer[] originArray) {
         if (originArray.length <= 1) {
             return originArray;
         }
         doBisect(
             new BisectInfo(0, originArray.length - 1, 0)
         );
-        ArrayList<int[]> sortedList = new ArrayList<>();
+        ArrayList<Integer[]> sortedList = new ArrayList<>();
         for (int i = bisectInfoMap.size() - 1; i >= 0; i--) {
             List<BisectInfo> bisectInfoList = bisectInfoMap.get(i);
-            ArrayList<int[]> newSortedList = new ArrayList<>();
+            ArrayList<Integer[]> newSortedList = new ArrayList<>();
             for (int j = 0; j < sortedList.size(); j += 2) {
                 if (j + 1 < sortedList.size()) {
                     newSortedList.add(mergeTwoArrays(sortedList.get(j), sortedList.get(j + 1)));
@@ -59,9 +59,9 @@ public class MergeSort implements ISort {
         return sortedList.get(0);
     }
 
-    private int[] doSort(int[] originArray, BisectInfo bisectInfo) {
+    private Integer[] doSort(Integer[] originArray, BisectInfo bisectInfo) {
         int length = bisectInfo.endIndex - bisectInfo.beginIndex;
-        int[] array = Arrays.copyOfRange(originArray, bisectInfo.beginIndex, bisectInfo.endIndex + 1);
+        Integer[] array = Arrays.copyOfRange(originArray, bisectInfo.beginIndex, bisectInfo.endIndex + 1);
         if (length == 0) {
             return array;
         }
@@ -101,7 +101,7 @@ public class MergeSort implements ISort {
         bisectInfo.layer--;
     }
 
-    public int[] mergeTwoArrays(int[] array1, int[] array2) {
+    public Integer[] mergeTwoArrays(Integer[] array1, Integer[] array2) {
         if (array1.length == 0) {
             return array2;
         }
@@ -109,7 +109,7 @@ public class MergeSort implements ISort {
             return array1;
         }
 
-        int[] result = new int[array1.length + array2.length];
+        Integer[] result = new Integer[array1.length + array2.length];
         int ptr1 = 0;
         int ptr2 = 0;
         int resultPtr = 0;

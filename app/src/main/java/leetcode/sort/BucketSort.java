@@ -5,7 +5,7 @@ import leetcode.ISort;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BucketSort implements ISort {
+public class BucketSort implements ISort<Integer> {
     private static final String SORT_TYPE = "桶排序";
 
     private static final int BUCKET_COUNT = 5;
@@ -31,7 +31,7 @@ public class BucketSort implements ISort {
     private final List<Bucket> buckets = new ArrayList<>();
 
     @Override
-    public int[] performSort(int[] originArray) {
+    public Integer[] performSort(Integer[] originArray) {
         getMinAndMaxValue(originArray);
         boolean[] access = new boolean[originArray.length];
         int diff = (maxValue - minValue) / BUCKET_COUNT;
@@ -49,19 +49,19 @@ public class BucketSort implements ISort {
             buckets.add(bucket);
         }
 
-        List<int[]> sortedArrays = new ArrayList<>();
+        List<Integer[]> sortedArrays = new ArrayList<>();
         SelectionSort selectionSort = new SelectionSort();
         for (Bucket bucket : buckets) {
-            int[] array = bucket.elements.stream().mapToInt(Integer::intValue).toArray();
+            Integer[] array = bucket.elements.toArray(Integer[]::new);
             sortedArrays.add(selectionSort.performSort(array));
         }
 
         MergeSort mergeSort = new MergeSort();
         while (sortedArrays.size() > 1) {
-            List<int[]> newSortedArrays = new ArrayList<>();
+            List<Integer[]> newSortedArrays = new ArrayList<>();
             for (int i = 0; i < sortedArrays.size(); i += 2) {
                 if (i + 1 < sortedArrays.size()) {
-                    int[] mergeResult = mergeSort.mergeTwoArrays(sortedArrays.get(i), sortedArrays.get(i + 1));
+                    Integer[] mergeResult = mergeSort.mergeTwoArrays(sortedArrays.get(i), sortedArrays.get(i + 1));
                     newSortedArrays.add(mergeResult);
                 } else {
                     newSortedArrays.add(sortedArrays.get(i));
@@ -74,7 +74,7 @@ public class BucketSort implements ISort {
         return sortedArrays.get(0);
     }
 
-    private void getMinAndMaxValue(int[] originArray) {
+    private void getMinAndMaxValue(Integer[] originArray) {
         for (int value : originArray) {
             if (value < minValue) {
                 minValue = value;

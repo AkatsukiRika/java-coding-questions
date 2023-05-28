@@ -2,13 +2,13 @@ package leetcode.sort;
 
 import leetcode.ISort;
 
-public class SelectionSort implements ISort {
+public class SelectionSort implements ISort<Integer> {
     private static final String SORT_TYPE_NAME = "选择排序";
     
     @Override
-    public int[] performSort(int[] originArray) {
+    public Integer[] performSort(Integer[] originArray) {
         if (originArray.length == 0) {
-            return new int[0];
+            return new Integer[0];
         }
         for (int i = 0; i < originArray.length - 1; i++) {
             for (int j = i; j < originArray.length; j++) {

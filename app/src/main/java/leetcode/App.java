@@ -18,40 +18,40 @@ public class App {
     private static void testSorts() {
         testSingleSort(
                 new SelectionSort(),
-                new int[]{9, 11, 13, 4, 6, 5, 7, 12, 1, 10, 2, 8, 3, 16, 14}
+                new Integer[]{9, 11, 13, 4, 6, 5, 7, 12, 1, 10, 2, 8, 3, 16, 14}
         );
         testSingleSort(
                 new BubbleSort(),
-                new int[]{-5, 9, 11, 13, 32, 4, 1, 10, 88, 2, 8, 3, 16, 14}
+                new Integer[]{-5, 9, 11, 13, 32, 4, 1, 10, 88, 2, 8, 3, 16, 14}
         );
         testSingleSort(
                 new InsertionSort(),
-                new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}
+                new Integer[]{1, 2, 3, 4, 5, 6, 7, 8, 9}
         );
         testSingleSort(
                 new MergeSort(),
-                new int[]{101, 11, 13, 51, 7, 12, 1, 8, 10, 2, 17, 3, 16, 14}
+                new Integer[]{101, 11, 13, 51, 7, 12, 1, 8, 10, 2, 17, 3, 16, 14}
         );
         testSingleSort(
                 new BucketSort(),
-                new int[]{1011, 23211, 124243, 511, 724332, -1124234}
+                new Integer[]{1011, 23211, 124243, 511, 724332, -1124234}
         );
     }
 
-    private static void testSingleSort(ISort sort, int[] originArray) {
-        int[] array;
+    private static <T> void testSingleSort(ISort<T> sort, T[] originArray) {
+        T[] array;
 
         array = Arrays.copyOf(originArray, originArray.length);
-        testSingleSortInner(new LibrarySort(), array);
+        testSingleSortInner(new LibrarySort<>(), array);
 
         array = Arrays.copyOf(originArray, originArray.length);
         testSingleSortInner(sort, array);
     }
 
-    private static void testSingleSortInner(ISort sort, int[] originArray) {
+    private static <T> void testSingleSortInner(ISort<T> sort, T[] originArray) {
         long beforeTime = System.currentTimeMillis();
-        int[] result = sort.performSort(originArray);
+        T[] result = sort.performSort(originArray);
         System.out.printf("TYPE=%s, TIME=%dms\n", sort.getSortType(), System.currentTimeMillis() - beforeTime);
-        Printer.printIntArray(result);
+        Printer.printArray(result);
     }
 }

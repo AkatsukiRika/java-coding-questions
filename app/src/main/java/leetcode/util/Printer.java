@@ -3,7 +3,7 @@ package leetcode.util;
 import leetcode.model.ListNode;
 
 public final class Printer {
-    public static void printIntArray(int[] arr) {
+    public static <T> void printArray(T[] arr) {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (int i = 0; i < arr.length; i++) {

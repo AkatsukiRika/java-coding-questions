@@ -3,6 +3,8 @@
  */
 package leetcode;
 
+import leetcode.nowcoder.BM22;
+import leetcode.nowcoder.BM44;
 import leetcode.sort.*;
 import leetcode.util.Printer;
 
@@ -12,7 +14,8 @@ public class App {
     public static void main(String[] args) {
 //        BaseSolution<Integer> solution = new NumWaysSolution();
 //        System.out.println(solution.performSingleTest());
-        testSorts();
+//        testSorts();
+        testNowCoderQuestion();
     }
 
     private static void testSorts() {
@@ -57,5 +60,11 @@ public class App {
         T[] result = sort.performSort(originArray);
         System.out.printf("TYPE=%s, TIME=%dms\n", sort.getSortType(), System.currentTimeMillis() - beforeTime);
         Printer.printArray(result);
+    }
+
+    private static void testNowCoderQuestion() {
+        System.out.println(
+                new BM22().compare("0.226", "0.36")
+        );
     }
 }

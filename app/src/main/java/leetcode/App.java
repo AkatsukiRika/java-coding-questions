@@ -3,6 +3,7 @@
  */
 package leetcode;
 
+import leetcode.nowcoder.BM100;
 import leetcode.nowcoder.BM22;
 import leetcode.nowcoder.BM44;
 import leetcode.sort.*;
@@ -63,8 +64,6 @@ public class App {
     }
 
     private static void testNowCoderQuestion() {
-        System.out.println(
-                new BM22().compare("0.226", "0.36")
-        );
+        new BM100().performTest();
     }
 }

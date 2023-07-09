@@ -64,6 +64,6 @@ public class App {
     }
 
     private static void testNowCoderQuestion() {
-        new BM100().performTest();
+        BM100.performTest();
     }
 }

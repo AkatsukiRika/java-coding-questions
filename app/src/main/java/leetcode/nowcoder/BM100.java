@@ -1,113 +1,122 @@
 package leetcode.nowcoder;
 
-import leetcode.util.Printer;
+import leetcode.model.ListNodeWithPrev;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * 牛客网BM100：设计LRU缓存结构
  */
 public class BM100 {
-    private static final String OPERATOR_SET = "set";
-    private static final String OPERATOR_GET = "get";
-    private static final String RETURN_VALUE_NULL = "null";
-    private static final int LEAST_RECENTLY_USED = 0;
+    private final int capacity;
 
-    private final HashMap<Integer, Integer> entryMap = new HashMap<>();
+    private int count = 0;
 
-    private final HashMap<Integer, Integer> keyToPriorityMap = new HashMap<>();
+    private ListNodeWithPrev head;
 
-    private final HashMap<Integer, Integer> priorityToKeyMap = new HashMap<>();
+    private ListNodeWithPrev tail;
 
-    private int curMaxPriority = LEAST_RECENTLY_USED;
+    private final HashMap<Integer, ListNodeWithPrev> hashMap;
 
-    private int curMinPriority = LEAST_RECENTLY_USED;
-
-    public ArrayList<String> LRUCache(
-        ArrayList<String> operators,
-        ArrayList<ArrayList<Integer>> param,
-        int capacity
-    ) {
-        ArrayList<String> result = new ArrayList<>();
-
-        for (int i = 0; i < operators.size(); i++) {
-            String operator = operators.get(i);
-            ArrayList<Integer> params = param.get(i);
-
-            if (operator.equals(OPERATOR_SET)) {
-                int key = params.get(0);
-                int value = params.get(1);
-                performSet(key, value, capacity);
-                result.add(RETURN_VALUE_NULL);
-                continue;
-            }
-
-            if (operator.equals(OPERATOR_GET)) {
-                int getResult = performGet(params.get(0));
-                result.add(Integer.valueOf(getResult).toString());
-            }
-        }
-
-        return result;
+    public BM100(int capacity) {
+        this.capacity = capacity;
+        this.hashMap = new HashMap<>();
     }
 
-    private void performSet(int key, int value, int capacity) {
-        if (entryMap.size() >= capacity) {
-            removeLeastRecentlyUsed();
-        }
-        entryMap.put(key, value);
-        keyToPriorityMap.put(key, curMaxPriority);
-        priorityToKeyMap.put(curMaxPriority, key);
-        curMaxPriority = curMaxPriority + 1;
-    }
-
-    private int performGet(int key) {
-        if (!entryMap.containsKey(key)) {
+    public int get(int key) {
+        if (!hashMap.containsKey(key)) {
             return -1;
         }
-        int result = entryMap.get(key);
-        int priority = keyToPriorityMap.get(key);
-        if (priority == curMinPriority) {
-            priorityToKeyMap.remove(curMinPriority);
-            curMinPriority = curMinPriority + 1;
-        }
-        keyToPriorityMap.put(key, curMaxPriority);
-        priorityToKeyMap.put(curMaxPriority, key);
-        curMaxPriority = curMaxPriority + 1;
-        return result;
+        int value = (hashMap.get(key) == null) ? -1 : hashMap.get(key).val;
+        removeByKey(key);
+        addToTail(key, value);
+        return value;
     }
 
-    private void removeLeastRecentlyUsed() {
-        if (priorityToKeyMap.containsKey(curMinPriority)) {
-            int key = priorityToKeyMap.get(curMinPriority);
-            entryMap.remove(key);
-            keyToPriorityMap.remove(key);
-            priorityToKeyMap.remove(curMinPriority);
-            curMinPriority = Collections.min(priorityToKeyMap.keySet());
+    public void set(int key, int value) {
+        if (count < capacity) {
+            addToTail(key, value);
+            count++;
+        } else {
+            removeHead();
+            addToTail(key, value);
         }
     }
 
-    /** ソリューションはここまで */
+    private void removeHead() {
+        if (head == null) {
+            return;
+        }
+        int oldHeadKey = head.key;
+        ListNodeWithPrev prevNode = head.prev;
+        if (prevNode == null) {
+            // head和tail均指向链表里的唯一节点
+            head = null;
+            tail = null;
+        } else {
+            prevNode.next = null;
+            head = prevNode;
+        }
+        hashMap.remove(oldHeadKey);
+    }
 
-    public void performTest() {
-        ArrayList<String> operators = new ArrayList<>(
-            List.of("set","set","set","get","set","set","get")
-        );
+    private void removeTail() {
+        if (tail == null) {
+            return;
+        }
+        int oldTailKey = tail.key;
+        ListNodeWithPrev nextNode = tail.next;
+        if (nextNode == null) {
+            // head和tail均指向链表里的唯一节点
+            head = null;
+            tail = null;
+        } else {
+            nextNode.prev = null;
+            tail = nextNode;
+        }
+        hashMap.remove(oldTailKey);
+    }
 
-        ArrayList<ArrayList<Integer>> param = new ArrayList<>() {{
-            add(new ArrayList<>(List.of(1, 1)));
-            add(new ArrayList<>(List.of(2, 2)));
-            add(new ArrayList<>(List.of(3, 3)));
-            add(new ArrayList<>(List.of(2)));
-            add(new ArrayList<>(List.of(4, 4)));
-            add(new ArrayList<>(List.of(5, 5)));
-            add(new ArrayList<>(List.of(2)));
-        }};
+    private void removeByKey(int key) {
+        ListNodeWithPrev node = hashMap.get(key);
+        if (node == head) {
+            removeHead();
+        } else if (node == tail) {
+            removeTail();
+        } else {
+            ListNodeWithPrev prevNode = node.prev;
+            ListNodeWithPrev nextNode = node.next;
+            if (prevNode != null) {
+                prevNode.next = nextNode;
+            }
+            if (nextNode != null) {
+                nextNode.prev = prevNode;
+            }
+            hashMap.remove(key);
+        }
+    }
 
-        ArrayList<String> result = LRUCache(operators, param, 3);
-        Printer.printList(result);
+    private void addToTail(int key, int value) {
+        ListNodeWithPrev newNode = new ListNodeWithPrev(key, value);
+        if (tail != null) {
+            tail.prev = newNode;
+            newNode.next = tail;
+        } else {
+            head = newNode;
+        }
+        tail = newNode;
+        hashMap.put(key, newNode);
+    }
+
+    /** 测试用方法 **/
+    public static void performTest() {
+        BM100 solution = new BM100(3);
+        solution.set(1, 1);
+        solution.set(2, 2);
+        solution.set(3, 3);
+        System.out.println(solution.get(2));
+        solution.set(4, 4);
+        solution.set(5, 5);
+        System.out.println(solution.get(2));
     }
 }

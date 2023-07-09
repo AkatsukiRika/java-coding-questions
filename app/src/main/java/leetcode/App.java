@@ -4,6 +4,7 @@
 package leetcode;
 
 import leetcode.nowcoder.BM100;
+import leetcode.nowcoder.BM101;
 import leetcode.nowcoder.BM22;
 import leetcode.nowcoder.BM44;
 import leetcode.sort.*;
@@ -64,6 +65,21 @@ public class App {
     }
 
     private static void testNowCoderQuestion() {
-        BM100.performTest();
+        int[] result = new BM101().LFU(
+            new int[][]{
+                {1, 1, 1},
+                {1, 2, 2},
+                {1, 3, 3},
+                {1, 4, 4},
+                {2, 4},
+                {2, 3},
+                {2, 2},
+                {2, 1},
+                {1, 5, 5},
+                {2, 4}
+            },
+            4
+        );
+        Printer.printIntArray(result);
     }
 }

@@ -18,6 +18,19 @@ public final class Printer {
         System.out.println(sb);
     }
 
+    public static void printIntArray(int[] arr) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < arr.length; i++) {
+            sb.append(arr[i]);
+            if (i != arr.length - 1) {
+                sb.append(",");
+            }
+        }
+        sb.append("]");
+        System.out.println(sb);
+    }
+
     public static <T> void printList(List<T> list) {
         StringBuffer sb = new StringBuffer();
         sb.append("[");

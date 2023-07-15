@@ -3,10 +3,7 @@
  */
 package leetcode;
 
-import leetcode.nowcoder.BM100;
-import leetcode.nowcoder.BM101;
-import leetcode.nowcoder.BM22;
-import leetcode.nowcoder.BM44;
+import leetcode.nowcoder.*;
 import leetcode.sort.*;
 import leetcode.util.Printer;
 
@@ -65,21 +62,9 @@ public class App {
     }
 
     private static void testNowCoderQuestion() {
-        int[] result = new BM101().LFU(
-            new int[][]{
-                {1, 1, 1},
-                {1, 2, 2},
-                {1, 3, 3},
-                {1, 4, 4},
-                {2, 4},
-                {2, 3},
-                {2, 2},
-                {2, 1},
-                {1, 5, 5},
-                {2, 4}
-            },
-            4
+        int result = new BM80().maxProfit(
+            new int[]{3,2,1}
         );
-        Printer.printIntArray(result);
+        System.out.println(result);
     }
 }
